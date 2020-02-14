@@ -1,9 +1,7 @@
 package hw03;
-
 import java.util.Scanner;
 
 public class HW3 {
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String[][] schedule;
@@ -17,9 +15,8 @@ public class HW3 {
                 {"Sunday","Chill"}};
         System.out.print("Please input the day of the week: ");
         String userInput = in.nextLine().toLowerCase();
-
         while(!userInput.equals("exit")){
-            switch (userInput){
+            switch (userInput.trim()){
                 case "monday":
                     System.out.printf("Your task for %s: %s\n", schedule[0][0], schedule[0][1]);
                     break;
