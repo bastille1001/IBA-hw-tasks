@@ -29,7 +29,7 @@ public class HW2 {
             if (inTargetY > target.length - 1) {
                 System.out.println("Try again. Input more than length");
                 enterY();
-                inTargetY = inputTargetX();
+                inTargetY = inputTargetY();
             } //checking input
 
             if (inTargetX != targetX || inTargetY != targetY) {
@@ -37,7 +37,7 @@ public class HW2 {
                 printArrayWall("|", target);
                 System.out.println("Try again");
             } else {
-                target[targetY][targetX] = "G";
+                target[targetY][targetX] = "X";
                 printArrayWall("|", target);
                 System.out.println("You have won!");
                 break;
@@ -95,7 +95,7 @@ public class HW2 {
     } //generate X coordinate of target
 
     private static Object[][] missShoot(int x, int y, Object[][] array) {
-        array[y][x] = "X";
+        array[y][x] = "*";
         return array;
     } //while miss, replace cell with {X}
 

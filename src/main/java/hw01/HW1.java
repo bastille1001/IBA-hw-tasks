@@ -3,14 +3,10 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class HW1 {
-    public static int[] add(int[] array, int element) {
-        int[] tmp = array.clone();
-        array = new int[tmp.length+1];
-        for (int i = 0; i < tmp.length; i++) {
-            array[i] = tmp[i];
-        }
-        array[tmp.length] = element;
-        return array;
+    public static int[] addElement(int[] org, int added) {
+        int[] result = Arrays.copyOf(org, org.length +1);
+        //result[org.length] = added;
+        return result;
     }
     public static void main(String[] args) {
         //генерация случайных чисел [0-100]
@@ -21,7 +17,7 @@ public class HW1 {
         int[] array = new int[100];
 
         //использовал просто для проверки кода
-        //System.out.println(randomNum);
+        System.out.println(randomNum);
 
         System.out.print("Enter your name: ");
         String name = in.nextLine();
@@ -47,8 +43,8 @@ public class HW1 {
                         }
                     }
                 }
-                System.out.println("Your number is: ");
-                System.out.println(Arrays.toString(add(array,guessNum)));
+                System.out.println("Your number is:");
+                System.out.println(Arrays.toString(addElement(array,guessNum)));
                 break;
             }
         }
