@@ -95,7 +95,7 @@ public class HW2 {
     } //generate X coordinate of target
 
     private static Object[][] missShoot(int x, int y, Object[][] array) {
-        array[y][x] = "*";
+        array[x][y] = "*";
         return array;
     } //while miss, replace cell with {X}
 
