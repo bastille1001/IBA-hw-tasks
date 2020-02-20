@@ -22,7 +22,7 @@ public class HW1 {
         int[] array = new int[100];
 
         //использовал просто для проверки кода
-        System.out.println(randomNum);
+        //System.out.println(randomNum);
 
         System.out.print("Enter your name: ");
         String name = in.nextLine();
@@ -39,7 +39,7 @@ public class HW1 {
             } else {
                 System.out.printf("Congratulations, %s! \n",name);
                 //пузырьковый метод сортировки
-                for (int k = 0; k < array.length - 1; k++) {
+                for (int k = 0; k < array.length - 1 ; k++) {
                     for (int j = k + 1; j < array.length; j++) {
                         if (array[k] < array[j]) {
                             int m = array[j];
@@ -50,7 +50,7 @@ public class HW1 {
                 }
                 System.out.println("Your number is:");
                 int[] a1 = Arrays.copyOf(array,i);
-                System.out.println(Arrays.toString(addElement(a1,guessNum)));
+                System.out.println(Arrays.toString(addElement(a1,array[i])));
                 break;
             }
         }
