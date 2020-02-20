@@ -3,12 +3,17 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class HW1 {
+
+
     public static int[] addElement(int[] org, int added) {
-        int[] result = Arrays.copyOf(org, org.length +1);
-        //result[org.length] = added;
+        int[] result = Arrays.copyOf(org, org.length + 1);
+        result[org.length] = added;
         return result;
     }
+
+
     public static void main(String[] args) {
+        int pos = 0;
         //генерация случайных чисел [0-100]
         int randomNum = (int) (Math.random() * (100 + 1));
         Scanner in = new Scanner(System.in);
@@ -44,7 +49,8 @@ public class HW1 {
                     }
                 }
                 System.out.println("Your number is:");
-                System.out.println(Arrays.toString(addElement(array,guessNum)));
+                int[] a1 = Arrays.copyOf(array,i);
+                System.out.println(Arrays.toString(addElement(a1,guessNum)));
                 break;
             }
         }

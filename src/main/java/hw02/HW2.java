@@ -37,7 +37,7 @@ public class HW2 {
                 printArrayWall("|", target);
                 System.out.println("Try again");
             } else {
-                target[targetY][targetX] = "X";
+                target[targetX][targetY] = "X";
                 printArrayWall("|", target);
                 System.out.println("You have won!");
                 break;
@@ -47,25 +47,18 @@ public class HW2 {
 
 
 
-
-
-
-
-
-
-
     }
     private static Object[][] createTarget(int height, int weight){
         return new Object[height][weight];
     }
     private static void fillAxisX0 (int firstPos, int step, Object[][] array) {
         for (int i = 0; i < array.length; i++) {
-            array[0][i] = firstPos - 1 + step++;
+            array[i][0] = firstPos - 1 + step++;
         }
     }
     private static void fillAxisY0(int firstPos, int step, Object[][] array) {
         for (int i = 0; i < array.length; i++) {
-            array[i][0] = firstPos - 1 + step++;
+            array[0][i] = firstPos - 1 + step++;
         }
     }
     private static void fillArray(int firstAxisX, int firstAxisY, String symb, Object[][] array) {
