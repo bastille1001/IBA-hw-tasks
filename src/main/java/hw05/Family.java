@@ -36,6 +36,14 @@ public class Family {
         child.setFamily(this);
     }
 
+    void deleteChild(int index) {
+        Human[] newChildren = new Human[this.children.length - 1];
+        children[index].setFamily(null);
+        System.arraycopy(this.children, 0, newChildren, 0, index);
+        System.arraycopy(this.children, index + 1, newChildren, index, this.children.length - index - 1);
+        this.children = newChildren;
+    }
+
     int countFamily() {
         return 2 + this.children.length;
     }

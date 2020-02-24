@@ -15,7 +15,16 @@ public class HW5 {
         myFamily.addChild(child1);
         System.out.println(myFamily);
 
-        myFamily.addChild(child2);
         System.out.println(myFamily);
+        System.out.println(father.getFamily());
+        myFamily.addChild(child2);
+        System.out.println(child2.getFamily());
+        myFamily.deleteChild(0);
+        System.out.println(child1.getFamily());
+        System.out.println(mother.getFamily());
+        System.out.println(father.hashCode());
+        System.out.println(myFamily.hashCode());
+        myFamily.addChild(child2);
+        System.out.println(myFamily.hashCode());
     }
 }
