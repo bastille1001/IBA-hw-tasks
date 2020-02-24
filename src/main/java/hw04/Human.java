@@ -8,7 +8,6 @@ public class Human {
     String surname;
     int year;
     int iQ;
-
     Pet pet;
     Human mother;
     Human father;
@@ -21,26 +20,7 @@ public class Human {
             {"saturday","go to gym"},
             {"sunday","do your diploma"}};
 
-    public void greetPet(){
-        System.out.printf("Hello, %s\n", pet.getNickname());
-    }
-    public void describePet(){
-        System.out.printf("I have a %s, he is %s years old, he is very %s", pet.getSpecies(),pet.getAge(),pet.getTrickLevel());
-    }
 
-    @Override
-    public String toString() {
-        return "Human{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + year +
-                ", iQ=" + iQ +
-                ", pet=" + pet +
-                ", mother=" + mother +
-                ", father=" + father +
-                ", schedule=" + Arrays.toString(schedule) +
-                '}';
-    }
     Human() {
     }
 
@@ -73,7 +53,6 @@ public class Human {
         Random random = new Random();
         int trick = random.nextInt(101);
         int petTrick = pet.trickLevel;
-        //System.out.println(trick);
         if (trick < petTrick) {
             System.out.printf("Hm... I will feed  %s\n", pet.nickname);
             return true;
@@ -81,5 +60,18 @@ public class Human {
             System.out.printf("I think %s is not hungry.", pet.nickname);
             return false;
         }
+    }
+
+    public void greetPet(){
+        System.out.printf("Hello, %s\n", pet.getNickname());
+    }
+
+    public void describePet(){
+        System.out.printf("I have a %s, he is %s years old, he is very %s", pet.getSpecies(),pet.getAge(),pet.getTrickLevel());
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Human{name='%s', surname='%s', year=%d, iQ=%d, pet=%s, mother=%s, father=%s, schedule=%s}", name, surname, year, iQ, pet, mother, father, Arrays.toString(schedule));
     }
 }
