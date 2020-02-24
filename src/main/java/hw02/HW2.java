@@ -14,8 +14,8 @@ public class HW2 {
 
         System.out.println("All set. Get ready to rumble!");
 
-        int targetX = targetAxisX(1, target.length - 1); //input "X" coordinate
-        int targetY = targetAxisY(1, target.length - 1); //input "Y" coordinate
+        int targetX = targetAxisX(1, target.length - 1);
+        int targetY = targetAxisY(1, target.length - 1);
         while (true) {
             enterX();
             int inTargetX = inputTargetX();
@@ -23,14 +23,14 @@ public class HW2 {
                 System.out.println("Try again. Input more than length");
                 enterX();
                 inTargetX = inputTargetX();
-            } //checking input
+            }
             enterY();
             int inTargetY = inputTargetY();
             if (inTargetY > target.length - 1) {
                 System.out.println("Try again. Input more than length");
                 enterY();
                 inTargetY = inputTargetY();
-            } //checking input
+            }
 
             if (inTargetX != targetX || inTargetY != targetY) {
                 missShoot(inTargetX, inTargetY, target);
@@ -75,22 +75,22 @@ public class HW2 {
             }
             System.out.println(" ");
         }
-    } //create wall between cells
+    }
 
     private static int targetAxisX(int startX, int arrayLengthX) {
         Random rnd = new Random();
         return rnd.nextInt(arrayLengthX - startX + 1) + 1;
-    } //generate X coordinate of target
+    }
 
     private static int targetAxisY(int startY, int arrayLengthY) {
         Random rnd = new Random();
         return rnd.nextInt(arrayLengthY - startY + 1) + 1;
-    } //generate X coordinate of target
+    }
 
     private static Object[][] missShoot(int x, int y, Object[][] array) {
         array[x][y] = "*";
         return array;
-    } //while miss, replace cell with {X}
+    }
 
     private static int inputTargetX() {
         Scanner in = new Scanner(System.in);

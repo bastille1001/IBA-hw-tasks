@@ -14,15 +14,13 @@ public class HW1 {
 
     public static void main(String[] args) {
         int pos = 0;
-        //генерация случайных чисел [0-100]
+
         int randomNum = (int) (Math.random() * (100 + 1));
         Scanner in = new Scanner(System.in);
 
-        //массив чисел, который буду заполнять
+
         int[] array = new int[100];
 
-        //использовал просто для проверки кода
-        //System.out.println(randomNum);
 
         System.out.print("Enter your name: ");
         String name = in.nextLine();
@@ -38,7 +36,6 @@ public class HW1 {
                 System.out.println("Your number is too small. Please, try again.");
             } else {
                 System.out.printf("Congratulations, %s! \n",name);
-                //пузырьковый метод сортировки
                 for (int k = 0; k < array.length - 1 ; k++) {
                     for (int j = k + 1; j < array.length; j++) {
                         if (array[k] < array[j]) {
