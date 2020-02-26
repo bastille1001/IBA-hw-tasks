@@ -13,14 +13,6 @@ public class Human {
 
     private String[][] schedule;
 
-    Family getFamily() {
-        return family;
-    }
-
-    void setFamily(Family family) {
-        this.family = family;
-    }
-
     Human() {
     }
 
@@ -37,6 +29,14 @@ public class Human {
         this.year = year;
         this.iQ = iQ;
         this.schedule = schedule;
+    }
+
+    Family getFamily() {
+        return family;
+    }
+
+    void setFamily(Family family) {
+        this.family = family;
     }
 
     @Override

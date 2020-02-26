@@ -22,14 +22,6 @@ public class Human {
             {"saturday","go to gym"},
             {"sunday","do your diploma"}};
 
-    Family getFamily() {
-        return family;
-    }
-
-    void setFamily(Family family) {
-        this.family = family;
-    }
-
     Human() {
     }
 
@@ -46,6 +38,14 @@ public class Human {
         this.year = year;
         this.iQ = iQ;
         this.schedule = schedule;
+    }
+
+    Family getFamily() {
+        return family;
+    }
+
+    void setFamily(Family family) {
+        this.family = family;
     }
 
     @Override
@@ -68,9 +68,7 @@ public class Human {
     public String toString() {
         if (name == null) {
             return "no info\n";
-        } else if (iQ == 0) {
-            return String.format("Human{name='%s', surname='%s', year=%d}", name, surname, year);
-        } else if (schedule[0][0] == null) {
+        } else if (iQ == 0 || schedule[0][0] == null) {
             return String.format("Human{name='%s', surname='%s', year=%d}", name, surname, year);
         } else {
             return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}", name, surname, year, iQ, Arrays.deepToString(schedule));

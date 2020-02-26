@@ -30,28 +30,39 @@ public class Pet {
         return species;
     }
 
+    public void setSpecies(int age) { this.age = age; }
+
     public String getNickname() {
         return nickname;
     }
+
+    public void setNickname(String nickname) { this.nickname = nickname; }
 
     public int getAge() {
         return age;
     }
 
+    public void setAge(int age) { this.age = age; }
+
     public int getTrickLevel() {
         return trickLevel;
     }
 
+    public void setTrickLevel(int trickLevel) { this.trickLevel = trickLevel; }
 
-    public void Eat(){
+    public String[] getHabits() { return habits; }
+
+    public void setHabits(String[] habits) { this.habits = habits; }
+
+    public void eat(){
         System.out.println("I`m eating");
     }
 
-    public void Respond(){
+    public void respond(){
         System.out.printf("Hi, owner! I am - %s. I miss you", nickname);
     }
 
-    public void Foul(){
+    public void foul(){
         System.out.println("I need to cover up");
     }
 
@@ -81,7 +92,4 @@ public class Pet {
     public int hashCode() {
         return species.hashCode() * age * nickname.hashCode() * trickLevel * -1;
     }
-
-
-
 }

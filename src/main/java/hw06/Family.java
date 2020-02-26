@@ -30,6 +30,10 @@ public class Family {
         mother.setFamily(this);
     }
 
+    int countFamily() {
+        return 2 + this.children.length;
+    }
+
     void addChild(Human child) {
         this.children = Arrays.copyOf(children, children.length + 1);
         children[children.length - 1] = child;
@@ -44,8 +48,30 @@ public class Family {
         this.children = newChildren;
     }
 
-    int countFamily() {
-        return 2 + this.children.length;
+    void describePet() {
+        if (pet.getTrickLevel() >= 50) {
+            System.out.printf("I have a %s, he is %d years old, he is very sly\n", pet.getSpecies(), pet.getAge());
+        } else {
+            System.out.printf("I have a %s, he is %d years old, he is almost not sly\n", pet.getSpecies(), pet.getAge());
+        }
+    }
+
+    void greetPet() {
+        System.out.printf("Hello, %s\n", pet.getNickname());
+    }
+
+    boolean feedPet() {
+        Random random = new Random();
+        int trick = random.nextInt(101);
+        int petTrick = pet.getTrickLevel();
+        //System.out.println(trick);
+        if (trick < petTrick) {
+            System.out.printf("Hm... I will feed  %s\n", pet.getNickname());
+            return true;
+        } else {
+            System.out.printf("I think %s is not hungry.", pet.getNickname());
+            return false;
+        }
     }
 
     @Override
@@ -76,33 +102,6 @@ public class Family {
         int result = Objects.hash(father, mother);
         result = 21 * result + Arrays.hashCode(children) * children.length * -1;
         return result;
-    }
-
-    boolean feedPet() {
-        Random random = new Random();
-        int trick = random.nextInt(101);
-        int petTrick = pet.getTrickLevel();
-        //System.out.println(trick);
-        if (trick < petTrick) {
-            System.out.printf("Hm... I will feed  %s\n", pet.getNickname());
-            return true;
-        } else {
-            System.out.printf("I think %s is not hungry.", pet.getNickname());
-            return false;
-        }
-
-    }
-
-    void describePet() {
-        if (pet.getTrickLevel() >= 50) {
-            System.out.printf("I have a %s, he is %d years old, he is very sly\n", pet.getSpecies(), pet.getAge());
-        } else {
-            System.out.printf("I have a %s, he is %d years old, he is almost not sly\n", pet.getSpecies(), pet.getAge());
-        }
-    }
-
-    void greetPet() {
-        System.out.printf("Hello, %s\n", pet.getNickname());
     }
 
     @Override
