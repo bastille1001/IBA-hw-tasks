@@ -1,25 +1,24 @@
-package hw06;
+package hw07;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Pet {
+public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
-    public Pet(){
-    }
+    Pet(){ this.species = Species.UNKNOWN;}
 
-    Pet(Species species, String nickname){
-        this.species = species;
+    Pet(String nickname){
         this.nickname = nickname;
+        this.species = Species.UNKNOWN;
     }
 
-    Pet(Species species, String nickname, int age, int trickLevel, String[] habits){
-        this.species = species;
+    Pet(String nickname, int age, int trickLevel, String[] habits){
+        this.species = Species.UNKNOWN;
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -54,17 +53,12 @@ public class Pet {
 
     public void setHabits(String[] habits) { this.habits = habits; }
 
-    public void eat(){
+    public static void eat(){
         System.out.println("I`m eating");
     }
 
-    public void respond(){
-        System.out.printf("Hi, owner! I am - %s. I miss you", nickname);
-    }
+    abstract void respond();
 
-    public void foul(){
-        System.out.println("I need to cover up");
-    }
 
     @Override
     public String toString() {
