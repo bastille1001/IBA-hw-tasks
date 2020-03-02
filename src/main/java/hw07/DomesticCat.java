@@ -1,6 +1,6 @@
 package hw07;
 
-public class DomesticCat extends Pet implements Foulible {
+public class DomesticCat extends Pet{
     public DomesticCat() {
         super.setSpecies(Species.DOMESTICCAT);
     }

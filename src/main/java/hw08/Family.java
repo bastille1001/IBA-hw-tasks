@@ -27,6 +27,10 @@ public class Family {
 
     public Pet getPet() { return pet; }
 
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+
     int countFamily() {
         return 2 + this.children.size();
     }

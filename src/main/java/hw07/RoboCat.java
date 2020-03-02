@@ -1,6 +1,6 @@
 package hw07;
 
-public class RoboCat extends Pet implements Foulible {
+public class RoboCat extends Pet {
     public RoboCat() {
         super.setSpecies(Species.ROBOCAT);
     }

@@ -10,6 +10,15 @@ public class Family {
     private Human[] children;
     private Pet pet = new Pet();
 
+    Family(Human father, Human mother) {
+        this.father = father;
+        this.mother = mother;
+        this.children = new Human[0];
+        this.pet = pet;
+        father.setFamily(this);
+        mother.setFamily(this);
+    }
+
     public Human getMother() { return mother; }
 
     public Human getFather() { return father; }
@@ -19,16 +28,6 @@ public class Family {
     public void setChildren(Human[] children) { this.children = children; }
 
     public Pet getPet() { return pet; }
-
-
-    Family(Human father, Human mother) {
-        this.father = father;
-        this.mother = mother;
-        this.children = new Human[0];
-        this.pet = pet;
-        father.setFamily(this);
-        mother.setFamily(this);
-    }
 
     void addChild(Human child) {
         this.children = Arrays.copyOf(children, children.length + 1);

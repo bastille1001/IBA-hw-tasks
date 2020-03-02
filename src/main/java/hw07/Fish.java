@@ -18,4 +18,9 @@ public class Fish extends Pet {
     void respond() {
         System.out.printf("Hello, owner. I am - %s. I miss you!\n", getNickname());
     }
+
+    @Override
+    public void foul() {
+
+    }
 }

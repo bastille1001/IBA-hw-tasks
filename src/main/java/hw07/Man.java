@@ -1,6 +1,6 @@
 package hw07;
 
-public class Man extends Human {
+public final class Man extends Human {
     public Man(String name, String surname, int year) {
         super(name, surname, year);
     }

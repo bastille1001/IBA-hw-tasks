@@ -92,4 +92,6 @@ public abstract class Pet {
         System.out.println("finalize" + this);
         super.finalize();
     }
+
+    public abstract void foul();
 }
