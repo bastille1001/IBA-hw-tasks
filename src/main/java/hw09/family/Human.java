@@ -1,4 +1,6 @@
-package hw08;
+package hw09.family;
+
+import hw09.DayOfWeek;
 
 import java.util.Map;
 import java.util.Objects;
@@ -36,11 +38,6 @@ public class Human {
     void setFamily(Family family) {
         this.family = family;
     }
-
-    void greetPet() {
-        System.out.println("Hello, my boy\n");
-    }
-
 
     @Override
     public boolean equals(Object that) {

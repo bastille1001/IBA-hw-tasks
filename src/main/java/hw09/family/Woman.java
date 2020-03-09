@@ -1,4 +1,6 @@
-package hw08;
+package hw09.family;
+
+import hw09.DayOfWeek;
 
 import java.util.Map;
 

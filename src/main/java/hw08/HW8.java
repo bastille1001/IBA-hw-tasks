@@ -3,6 +3,7 @@ package hw08;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class HW8 {
     public static void main(String[] args) {
@@ -11,6 +12,10 @@ public class HW8 {
             add("eat");
         }};
         Dog dog = new Dog("Boss", 2, 23, habits);
+        DomesticCat cat = new DomesticCat("Little", 2, 50, habits);
+        Set<Pet> pets = new HashSet<>();
+        pets.add(dog);
+        pets.add(cat);
         Map<DayOfWeek, String> schedule = new HashMap<DayOfWeek, String>() {{
             put(DayOfWeek.MONDAY, "repair the car");
         }};
@@ -18,7 +23,9 @@ public class HW8 {
         Man father = new Man("David", "Beckham", 1980, 120, schedule);
         Woman mother = new Woman("Viktoria","Beckham",1985,120,schedule);
 
-        Family fam = new Family(father,mother,dog);
+        Family fam = new Family(father,mother, pets);
+        fam.getFather().greetPet();
+        fam.greetPet();
         System.out.println(fam);
         System.out.println(schedule.get(DayOfWeek.MONDAY));
     }
