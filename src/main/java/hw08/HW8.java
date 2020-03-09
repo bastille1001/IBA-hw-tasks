@@ -11,11 +11,14 @@ public class HW8 {
             add("sleep");
             add("eat");
         }};
+
         Dog dog = new Dog("Boss", 2, 23, habits);
         DomesticCat cat = new DomesticCat("Little", 2, 50, habits);
+
         Set<Pet> pets = new HashSet<>();
         pets.add(dog);
         pets.add(cat);
+
         Map<DayOfWeek, String> schedule = new HashMap<DayOfWeek, String>() {{
             put(DayOfWeek.MONDAY, "repair the car");
         }};
@@ -23,10 +26,18 @@ public class HW8 {
         Man father = new Man("David", "Beckham", 1980, 120, schedule);
         Woman mother = new Woman("Viktoria","Beckham",1985,120,schedule);
 
+        Man son = new Man("Tima","Huseynov",1997);
+        Woman daughter = new Woman("Aysu","Huseynova",2004);
+
         Family fam = new Family(father,mother, pets);
-        fam.getFather().greetPet();
-        fam.greetPet();
+//        fam.getFather().greetPet();
+//        fam.greetPet();
+        fam.addChild(son);
+        fam.addChild(daughter);
+
+        fam.deleteChild(son);
+
         System.out.println(fam);
-        System.out.println(schedule.get(DayOfWeek.MONDAY));
+//        System.out.println(schedule.get(DayOfWeek.MONDAY));
     }
 }
