@@ -22,6 +22,13 @@ public class Human {
         this.year = year;
     }
 
+    Human(String name, String surname, int year, int iQ){
+        this.name = name;
+        this.surname = surname;
+        this.year = year;
+        this.iQ = iQ;
+    }
+
 
     Human(String name, String surname, int year, int iQ, Map<DayOfWeek, String> schedule) {
         this.name = name;
@@ -30,6 +37,12 @@ public class Human {
         this.iQ = iQ;
         this.schedule = schedule;
     }
+
+    public int getYear() { return year; }
+
+    public int getiQ() { return iQ; }
+
+    public String getSurname() { return surname; }
 
     Family getFamily() {
         return family;

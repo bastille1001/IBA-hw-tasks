@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public abstract class Pet {
+
     private Species species;
     private String nickname;
     private int age;
