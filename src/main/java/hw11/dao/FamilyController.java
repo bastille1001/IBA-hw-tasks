@@ -1,0 +1,62 @@
+package hw11.dao;
+
+import hw11.family.Family;
+import hw11.family.Human;
+import hw11.pets.Pet;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FamilyController {
+
+    private FamilyService familyService = new FamilyService();
+
+    public ArrayList<Family> getAllFamilies(){ return (ArrayList<Family>) familyService.getAllFamilies(); }
+
+    public void displayAllFamilies(){ familyService.displayAllFamilies(); }
+
+    public List<Family> getFamiliesBiggerThan(int familySize){ return familyService.getFamiliesBiggerThan(familySize); }
+
+    public List<Family> getFamiliesLessThan(int familySize){ return familyService.getFamiliesLessThan(familySize); }
+
+    public int countFamiliesWithMemberNumber(int familySize){
+        return familyService.countFamiliesWithMemberNumber(familySize);
+    }
+
+    public void createNewFamily(Human father, Human mother) {
+        familyService.createNewFamily(father, mother);
+    }
+
+    public void deleteFamilyByIndex(int index) {
+        familyService.deleteFamilyByIndex(index);
+    }
+
+    public Family bornChild(Family family, String manName, String womanName) throws ParseException {
+        return familyService.bornChild(family, manName, womanName);
+    }
+
+    public Family adoptChild(Family family, Human child) {
+        return familyService.adoptChild(family, child);
+    }
+
+    public void deleteAllChildrenOlderThen(int age) {
+        familyService.deleteAllChildrenOlderThen(age);
+    }
+
+    public int count() {
+        return familyService.count();
+    }
+
+    public Family getFamilyById(int index) {
+        return familyService.getFamilyById(index);
+    }
+
+    public ArrayList<Pet> getPets(int index) {
+        return familyService.getPets(index);
+    }
+
+    public void addFamily(Family family) {
+        familyService.addFamily(family);
+    }
+}
