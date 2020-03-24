@@ -1,10 +1,8 @@
-package hw12.dao;
-
-import hw12.family.Family;
+package hw12.dao.İnterfaces;
 
 import java.util.List;
 
-public interface FamilyDAO {
+public interface FamilyDAO<Family> {
 
     List<Family> getAllFamilies();
 

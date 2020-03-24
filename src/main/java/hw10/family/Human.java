@@ -4,6 +4,9 @@ import hw10.DateConverter;
 import hw10.DayOfWeek;
 
 import java.text.ParseException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.Objects;
@@ -49,13 +52,8 @@ public class Human {
     }
 
     public String describeAge() {
-        Calendar calendar = Calendar.getInstance();
-        long def = calendar.getTimeInMillis() - this.birthDate;
-        calendar.setTimeInMillis(def);
-        int year = calendar.get(Calendar.YEAR) - 1970;
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH) - 1;
-        return year + " year " + month + " month " + day + " day";
+        LocalDate date = Instant.ofEpochMilli(birthDate).atZone(ZoneId.systemDefault()).toLocalDate();
+        return date.toString();
     }
 
     public int getiQ() { return iQ; }

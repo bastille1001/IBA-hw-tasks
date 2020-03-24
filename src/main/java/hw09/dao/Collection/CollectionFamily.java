@@ -1,11 +1,13 @@
-package hw09.dao;
+package hw09.dao.Collection;
 
+import hw09.dao.İnterfaces.FamilyDAO;
 import hw09.family.Family;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CollectionFamily implements FamilyDAO {
-    List<Family> familyList = new ArrayList<>();
+public class CollectionFamily implements FamilyDAO<Family> {
+
+    private List<Family> familyList = new ArrayList<>();
 
     @Override
     public List<Family> getAllFamilies() { return familyList; }

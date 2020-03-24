@@ -1,8 +1,13 @@
-package hw12.dao;
+package hw11.dao.Services;
 
-import hw12.DateConverter;
-import hw12.family.*;
-import hw12.pets.Pet;
+import hw11.DateConverter;
+import hw11.dao.Collection.CollectionFamily;
+import hw11.dao.İnterfaces.FamilyDAO;
+import hw11.family.Family;
+import hw11.family.Human;
+import hw11.family.Man;
+import hw11.family.Woman;
+import hw11.pets.Pet;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -13,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class FamilyService {
 
-    FamilyDAO familyDAO = new CollectionFamily();
+    private FamilyDAO<Family> familyDAO = new CollectionFamily();
 
     public ArrayList<Family> getAllFamilies(){ return (ArrayList<Family>) familyDAO.getAllFamilies(); }
 
@@ -46,38 +51,32 @@ public class FamilyService {
 
     public void deleteFamilyByIndex(int index){ familyDAO.deleteFamilyByIndex(index); }
 
-    public void bornChild(int index, String manName, String womanName) throws ParseException {
-        int random = (int) (Math.random() * 100);
-        Family family = familyDAO.getFamilyByIndex(index - 1);
-        if (family.countFamily() >= 4) throw new FamilyOverflowException
-                ("Family overflow, number of member must be no more than 4");
-        int iq = (family.getFather().getiQ() + family.getMother().getiQ()) / 2;
-        String year = DateConverter.millsToString((long) (Calendar.getInstance().
-                getTimeInMillis() * ((Math.random() * 0.3) + 0.7)));
-        if (random <= 50) {
-            Man childMan = new Man(manName, family.getFather().getSurname(), year, iq);
+    public Family bornChild(Family family, String male, String female) throws ParseException {
+        int rnd = (int)(Math.random()*100);
+        int iq = (family.getFather().getiQ() + family.getMother().getiQ())/2;
+        String year = DateConverter.millsToString((long)(Calendar.getInstance()
+            .getTimeInMillis()*(Math.random()*0.3)+0.7));
+        if (rnd <= 50){
+            Man childMan = new Man(male,family.getFather().getSurname(),year,iq);
             family.addChild(childMan);
-        } else {
-            Woman childWoman = new Woman(womanName, family.getFather().getSurname(), year, iq);
+        }else {
+            Woman childWoman = new Woman(female,family.getMother().getSurname(),year,iq);
             family.addChild(childWoman);
         }
-        familyDAO.save(family);
+        return familyDAO.save(family);
     }
 
-    public void adoptChild(int index, Human child) {
-        Family family = familyDAO.getFamilyByIndex(index - 1);
-        if (family.countFamily() >= 4) throw new FamilyOverflowException
-                ("Family overflow, number of member must be no more than 4");
-        family.addChild(child);
-        child.setSurname(family.getFather().getSurname());
+    public Family adoptChild(Family family, Human human){
+        family.addChild(human);
         familyDAO.save(family);
+        return family;
     }
 
     public void deleteAllChildrenOlderThen(int age){
-        for (Family family : familyDAO.getAllFamilies()) {
-            family.getChildren().removeIf(human -> (2020 - human.getAge()) > age);
-            familyDAO.save(family);
-        }
+        Family family = new Family();
+        familyDAO.getAllFamilies()
+                .forEach(family1 -> family.getChildren()
+                        .removeIf(human -> (2020 - human.getAge()) > age));
     }
 
     public int count(){ return familyDAO.getAllFamilies().size(); }
@@ -89,15 +88,4 @@ public class FamilyService {
     }
 
     public void addFamily(Family family) { familyDAO.save(family); }
-
-    public void createFamilies(int number) throws ParseException {
-        FamilyBuilder familyBuilder = new FamilyBuilder();
-        for (int i = 0; i < number; i++) {
-            Family family = familyBuilder.build();
-            int chance = (int) (Math.random() * 100);
-            if (chance > 45) family.bornChild();
-            if (chance > 75) family.bornChild();
-            familyDAO.save(family);
-        }
-    }
 }

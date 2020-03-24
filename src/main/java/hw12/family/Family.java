@@ -10,10 +10,10 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-public class Family {
+public class Family implements Printable {
     private Human mother;
     private Human father;
-    private List<Human> children;
+    private ArrayList<Human> children;
     private ArrayList<Pet> pet;
 
     public Family(Human father, Human mother) {
@@ -31,7 +31,7 @@ public class Family {
 
     public List<Human> getChildren() { return children; }
 
-    public void setChildren(List<Human> children) { this.children = children; }
+    public void setChildren(ArrayList<Human> children) { this.children = children; }
 
     public ArrayList<Pet> getPet() { return pet; }
 
@@ -69,6 +69,40 @@ public class Family {
         }
     }
 
+    private StringBuilder childPrettyFormat(ArrayList<Human> children) {
+        StringBuilder result = new StringBuilder();
+        for (Human child : children) {
+            if (child instanceof Man) {
+                result.append("\n      boy: ").append(child.prettyFormat());
+            } else if (child instanceof Woman) {
+                result.append("\n      girl: ").append(child.prettyFormat());
+            } else {
+                result.append("\n      child: ").append(child.prettyFormat());
+            }
+        }
+        return result;
+    }
+
+    private String decorator() {
+        return "-------------------------";
+    }
+
+    @Override
+    public String prettyFormat() {
+        if (this.children.size() == 0 && pet.size() == 0) {
+            return String.format("Family\nFather: %s\nMother: %s\nPeople in family: %d\n%s"
+                    , father, mother, this.countFamily(), decorator());
+        } else if (this.children.size() == 0 && pet.size() != 0) {
+            return String.format("Family\n Father: %s\nMother: %s\nPet: %s\nPeople in family: %d\n%s"
+                    , father, mother, pet, this.countFamily(), decorator());
+        } else if (this.children.size() != 0 && pet.size() == 0) {
+            return String.format("Family\nFather: %s\nMother: %s\nChildren: %s\nPeople in family: %d\n%s"
+                    , father, mother, childPrettyFormat(children), this.countFamily(), decorator());
+        } else {
+            return String.format("Family\nFather: %s\nMother: %s\nPet: %s\nChildren: %s\nPeople in family: %d\n%s"
+                    , father, mother, pet, childPrettyFormat(children), this.countFamily(), decorator());
+        }
+    }
 
     @Override
     public String toString() {

@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Map;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Printable {
     private String name;
     private String surname;
     private long birthDate;
@@ -95,9 +95,11 @@ public class Human {
         if (name == null) {
             return "no info\n";
         }else if (iQ == 0 || schedule == null) {
-            return String.format("%s{name='%s', surname='%s', birthDate=%s}", this.getClass().getSimpleName(), name, surname, DateConverter.format(birthDate));
+            return String.format("%s{name='%s', surname='%s', birthDate=%s}"
+                    , this.getClass().getSimpleName(), name, surname, DateConverter.format(birthDate));
         }else {
-            return String.format("%s{name='%s', surname='%s', birthDate=%s, iq=%d, schedule=%s}", this.getClass().getSimpleName(), name, surname, DateConverter.format(birthDate), iQ, schedule);
+            return String.format("%s{name='%s', surname='%s', birthDate=%s, iq=%d, schedule=%s}"
+                    , this.getClass().getSimpleName(), name, surname, DateConverter.format(birthDate), iQ, schedule);
         }
     }
 
@@ -105,5 +107,21 @@ public class Human {
     protected void finalize() throws Throwable {
         System.out.println("finalize" + this);
         super.finalize();
+    }
+
+    @Override
+    public String prettyFormat() {
+        if (name == null) {
+            return "no info\n";
+        } else if (iQ == 0) {
+            return String.format("{name: '%s', surname: '%s', birthDate: %s}"
+                    , name, surname, DateConverter.format(birthDate));
+        } else if (schedule == null) {
+            return String.format("{name: '%s', surname: '%s', birthDate: %s, iq: %d}"
+                    , name, surname, DateConverter.format(birthDate), iQ);
+        } else {
+            return String.format("{name: '%s', surname: '%s', birthDate: %s, iq: %d, schedule: %s}"
+                    , name, surname, DateConverter.format(birthDate), iQ, schedule);
+        }
     }
 }

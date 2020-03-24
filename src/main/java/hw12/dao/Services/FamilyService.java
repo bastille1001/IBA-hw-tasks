@@ -1,8 +1,11 @@
-package hw13.dao;
+package hw12.dao.Services;
 
-import hw13.DateConverter;
-import hw13.family.*;
-import hw13.pets.Pet;
+import hw12.DateConverter;
+import hw12.dao.Collection.CollectionFamily;
+import hw12.dao.Exceptions.FamilyOverflowException;
+import hw12.dao.İnterfaces.FamilyDAO;
+import hw12.family.*;
+import hw12.pets.Pet;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -13,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class FamilyService {
 
-    FamilyDAO familyDAO = new CollectionFamily();
+    private FamilyDAO<Family> familyDAO = new CollectionFamily();
 
     public ArrayList<Family> getAllFamilies(){ return (ArrayList<Family>) familyDAO.getAllFamilies(); }
 
@@ -99,9 +102,5 @@ public class FamilyService {
             if (chance > 75) family.bornChild();
             familyDAO.save(family);
         }
-    }
-
-    public void load(ArrayList<Family> families) {
-        familyDAO.loadData(families);
     }
 }

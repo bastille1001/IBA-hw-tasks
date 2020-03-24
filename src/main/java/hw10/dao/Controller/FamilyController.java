@@ -1,12 +1,12 @@
-package hw11.dao;
+package hw10.dao.Controller;
 
-import hw11.family.Family;
-import hw11.family.Human;
-import hw11.pets.Pet;
+import hw10.dao.Services.FamilyService;
+import hw10.family.Family;
+import hw10.family.Human;
+import hw10.pets.Pet;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FamilyController {
 
@@ -16,9 +16,9 @@ public class FamilyController {
 
     public void displayAllFamilies(){ familyService.displayAllFamilies(); }
 
-    public List<Family> getFamiliesBiggerThan(int familySize){ return familyService.getFamiliesBiggerThan(familySize); }
+    public ArrayList<Family> getFamiliesBiggerThan(int familySize){ return familyService.getFamiliesBiggerThan(familySize); }
 
-    public List<Family> getFamiliesLessThan(int familySize){ return familyService.getFamiliesLessThan(familySize); }
+    public ArrayList<Family> getFamiliesLessThan(int familySize){ return familyService.getFamiliesLessThan(familySize); }
 
     public int countFamiliesWithMemberNumber(int familySize){
         return familyService.countFamiliesWithMemberNumber(familySize);

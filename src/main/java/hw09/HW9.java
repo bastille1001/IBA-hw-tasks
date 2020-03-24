@@ -1,6 +1,6 @@
 package hw09;
 
-import hw09.dao.FamilyController;
+import hw09.dao.Controller.FamilyController;
 import hw09.family.Family;
 import hw09.family.Man;
 import hw09.family.Woman;

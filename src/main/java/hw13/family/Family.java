@@ -4,13 +4,14 @@ package hw13.family;
 import hw13.DateConverter;
 import hw13.pets.Pet;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-public class Family {
+public class Family implements Serializable {
     private Human mother;
     private Human father;
     private List<Human> children;

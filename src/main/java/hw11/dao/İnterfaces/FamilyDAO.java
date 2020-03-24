@@ -1,10 +1,8 @@
-package hw13.dao;
-
-import hw13.family.Family;
+package hw11.dao.İnterfaces;
 
 import java.util.List;
 
-public interface FamilyDAO {
+public interface FamilyDAO<Family> {
 
     List<Family> getAllFamilies();
 
@@ -15,6 +13,4 @@ public interface FamilyDAO {
     boolean deleteFamily(Family family);
 
     Family save(Family family);
-
-    void loadData(List<Family> families);
 }

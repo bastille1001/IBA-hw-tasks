@@ -1,6 +1,6 @@
 package hw12;
 
-import hw12.dao.FamilyController;
+import hw12.dao.Controller.FamilyController;
 import hw12.family.Human;
 import hw12.family.HumanBuilder;
 import hw12.family.Man;

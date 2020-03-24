@@ -1,12 +1,13 @@
 package hw13;
 
-import hw13.dao.FamilyController;
+import hw13.dao.Controller.FamilyController;
 import hw13.family.Family;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class SaveLoader {
+public class SaveLoader  {
+
     private String path = "";
 
     public SaveLoader(String path) {

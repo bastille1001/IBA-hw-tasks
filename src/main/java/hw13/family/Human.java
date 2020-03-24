@@ -3,12 +3,13 @@ package hw13.family;
 import hw13.DateConverter;
 import hw13.DayOfWeek;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Serializable {
     private String name;
     private String surname;
     private long birthDate;

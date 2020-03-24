@@ -1,12 +1,11 @@
-package hw12.dao;
+package hw09.dao.Controller;
 
-import hw12.family.Family;
-import hw12.family.Human;
-import hw12.pets.Pet;
+import hw09.dao.Services.FamilyService;
+import hw09.family.Family;
+import hw09.family.Human;
+import hw09.pets.Pet;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FamilyController {
 
@@ -16,9 +15,9 @@ public class FamilyController {
 
     public void displayAllFamilies(){ familyService.displayAllFamilies(); }
 
-    public List<Family> getFamiliesBiggerThan(int familySize){ return familyService.getFamiliesBiggerThan(familySize); }
+    public ArrayList<Family> getFamiliesBiggerThan(int familySize){ return familyService.getFamiliesBiggerThan(familySize); }
 
-    public List<Family> getFamiliesLessThan(int familySize){ return familyService.getFamiliesLessThan(familySize); }
+    public ArrayList<Family> getFamiliesLessThan(int familySize){ return familyService.getFamiliesLessThan(familySize); }
 
     public int countFamiliesWithMemberNumber(int familySize){
         return familyService.countFamiliesWithMemberNumber(familySize);
@@ -32,20 +31,12 @@ public class FamilyController {
         familyService.deleteFamilyByIndex(index);
     }
 
-    public void bornChild(int index, String manName, String womanName) throws ParseException {
-        try {
-            familyService.bornChild(index, manName, womanName);
-        } catch (FamilyOverflowException ex) {
-            System.out.println(ex.getMessage());
-        }
+    public Family bornChild(Family family, String manName, String womanName) {
+        return familyService.bornChild(family, manName, womanName);
     }
 
-    public void adoptChild(int index, Human child) {
-        try {
-            familyService.adoptChild(index, child);
-        } catch (FamilyOverflowException ex) {
-            System.out.println(ex.getMessage());
-        }
+    public Family adoptChild(Family family, Human child) {
+        return familyService.adoptChild(family, child);
     }
 
     public void deleteAllChildrenOlderThen(int age) {
@@ -64,11 +55,11 @@ public class FamilyController {
         return familyService.getPets(index);
     }
 
+//    public void addPet(int index, Pet pet) {
+//        familyService.addPet(index, pet);
+//    }
+
     public void addFamily(Family family) {
         familyService.addFamily(family);
-    }
-
-    public void createFamilies(int number) throws ParseException {
-        familyService.createFamilies(number);
     }
 }

@@ -2,10 +2,11 @@ package hw13.family;
 
 import hw13.DayOfWeek;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Map;
 
-public class Woman extends Human {
+public class Woman extends Human implements Serializable {
 
     public Woman(String name, String surname, String birthDate) throws ParseException {
         super(name, surname, birthDate);

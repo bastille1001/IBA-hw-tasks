@@ -1,6 +1,6 @@
 package hw11;
 
-import hw11.dao.FamilyController;
+import hw11.dao.Controller.FamilyController;
 import hw11.family.Family;
 import hw11.family.Man;
 import hw11.family.Woman;

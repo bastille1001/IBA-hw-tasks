@@ -1,17 +1,22 @@
-package hw09.dao;
+package hw10.dao.Services;
 
-import hw09.family.Family;
-import hw09.family.Human;
-import hw09.family.Man;
-import hw09.family.Woman;
-import hw09.pets.Pet;
+import hw10.DateConverter;
+import hw10.dao.Collection.CollectionFamily;
+import hw10.dao.İnterfaces.FamilyDAO;
+import hw10.family.Family;
+import hw10.family.Human;
+import hw10.family.Man;
+import hw10.family.Woman;
+import hw10.pets.Pet;
 
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Calendar;
+
 
 public class FamilyService {
 
-    FamilyDAO familyDAO = new CollectionFamily();
+    private FamilyDAO<Family> familyDAO = new CollectionFamily();
 
     public ArrayList<Family> getAllFamilies(){ return (ArrayList<Family>) familyDAO.getAllFamilies(); }
 
@@ -50,10 +55,11 @@ public class FamilyService {
 
     public void deleteFamilyByIndex(int index){ familyDAO.deleteFamilyByIndex(index); }
 
-    public Family bornChild(Family family,String male, String female){
+    public Family bornChild(Family family, String male, String female) throws ParseException {
         int rnd = (int)(Math.random()*100);
         int iq = (family.getFather().getiQ() + family.getMother().getiQ())/2;
-        int year = (int)(Math.random()*10 + 18 + family.getMother().getYear());
+        String year = DateConverter.millsToString((long)(Calendar.getInstance()
+            .getTimeInMillis()*(Math.random()*0.3)+0.7));
         if (rnd <= 50){
             Man childMan = new Man(male,family.getFather().getSurname(),year,iq);
             family.addChild(childMan);
@@ -72,7 +78,7 @@ public class FamilyService {
 
     public void deleteAllChildrenOlderThen(int age){
         for (Family family: familyDAO.getAllFamilies()) {
-            family.getChildren().removeIf(human -> (2020 - human.getYear()) > age );
+            family.getChildren().removeIf(human -> (2020 - human.getAge()) > age );
             familyDAO.save(family);
         }
     }

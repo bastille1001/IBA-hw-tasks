@@ -1,4 +1,4 @@
-package hw12.dao;
+package hw13.dao.Exceptions;
 
 public class FamilyOverflowException extends RuntimeException {
     public FamilyOverflowException(String s) {

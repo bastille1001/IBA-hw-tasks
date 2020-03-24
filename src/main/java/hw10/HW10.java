@@ -1,6 +1,6 @@
 package hw10;
 
-import hw10.dao.FamilyController;
+import hw10.dao.Controller.FamilyController;
 import hw10.family.Family;
 import hw10.family.Man;
 import hw10.family.Woman;
@@ -35,5 +35,8 @@ public class HW10 {
         System.out.println(controller.getAllFamilies());
         controller.adoptChild(family, child);
         System.out.println(controller.getAllFamilies());
+
+        String age = father.describeAge();
+        System.out.println(age);
     }
 }

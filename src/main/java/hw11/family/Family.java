@@ -13,6 +13,8 @@ public class Family {
     private List<Human> children;
     private ArrayList<Pet> pet;
 
+    public Family(){}
+
     public Family(Human father, Human mother) {
         this.father = father;
         this.mother = mother;
