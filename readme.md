@@ -2,4 +2,4 @@
 
 body
 
-[alexr github link](https://github.com/alexr007)
+All home tasks at IBA-tech Academy (Java Backend Developer )
